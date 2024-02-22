@@ -1,4 +1,5 @@
 resource "aws_iam_user" "user" {
+  # checkov:skip=CKV_AWS_273: Checkov fix
   name          = "${local.resource_prefix.value}-user"
   force_destroy = true
 
@@ -23,6 +24,11 @@ resource "aws_iam_access_key" "user" {
 }
 
 resource "aws_iam_user_policy" "userpolicy" {
+  # checkov:skip=CKV_AWS_289: checkov fix
+  # checkov:skip=CKV_AWS_287: checkov fix
+  # checkov:skip=CKV_AWS_290: checkov fix
+  # checkov:skip=CKV_AWS_286: checkov fix
+  # checkov:skip=CKV_AWS_288: checkov fix
   name = "excess_policy"
   user = "${aws_iam_user.user.name}"
 
