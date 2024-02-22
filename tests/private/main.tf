@@ -1,5 +1,4 @@
 resource "aws_ebs_volume" "web_host_storage" {
-  # checkov:skip=CKV_AWS_189: ADD REASON
   # unencrypted volume
   availability_zone = "${var.region}a"
   #encrypted         = false  # Setting this causes the volume to be recreated on apply 
@@ -16,5 +15,4 @@ resource "aws_ebs_volume" "web_host_storage" {
     git_repo             = "terragoat"
     yor_trace            = "c5509daf-10f0-46af-9e03-41989212521d"
   })
-  encrypted = true
 }
