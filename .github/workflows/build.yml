@@ -46,3 +46,20 @@ jobs:
           # update major tag
           git tag -f "$major"
           git push -f origin "$major"
+
+  scan:
+    runs-on: ubuntu-latest 
+    strategy:
+      matrix: 
+        python-version: [3.8]
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Run Prisma Cloud 
+        id: PrismaCloud
+        uses: bridgecrewio/checkov-action@master 
+        env:
+          PRISMA_API_URL: https://api4.prismacloud.io
+        with:
+          api-key: ${{ secrets.BC_API_KEY }}
