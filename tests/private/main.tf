@@ -4,3 +4,4 @@ module "s3_bucket" {
   acl     = "public"
   enabled = true
 }
+
